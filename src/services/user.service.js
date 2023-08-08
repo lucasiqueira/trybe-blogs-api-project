@@ -7,6 +7,16 @@ const getAllUsers = async () => {
   return { status: 'SUCCESSFUL', data: users };
 };
 
+const getUserById = async (id) => {
+  const user = await User.findByPk(id, { attributes: { exclude: 'password' } });
+
+  if (!user) {
+    return { status: 'NOT_FOUND', data: { message: 'User does not exist' } };
+  }
+
+  return { status: 'SUCCESSFUL', data: user };
+};
+
 const getUserByEmail = async (email) => {
   const user = await User.findOne({
     where: { email },
@@ -26,6 +36,7 @@ const createUser = async (data) => {
 
 module.exports = {
   getAllUsers,
+  getUserById,
   getUserByEmail,
   createUser,
 };

@@ -1,6 +1,11 @@
-const { createToken } = require('../auth/validateJWT');
 const { User } = require('../models');
+const { createToken } = require('../auth/validateJWT');
 const removePassword = require('../utils/removePassword');
+
+const getAllUsers = async () => {
+  const users = await User.findAll({ attributes: { exclude: 'password' } });
+  return { status: 'SUCCESSFUL', data: users };
+};
 
 const getUserByEmail = async (email) => {
   const user = await User.findOne({
@@ -20,6 +25,7 @@ const createUser = async (data) => {
 };
 
 module.exports = {
+  getAllUsers,
   getUserByEmail,
   createUser,
 };

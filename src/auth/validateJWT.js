@@ -9,6 +9,9 @@ const JWTConfig = {
 
 const createToken = (payload) => jwt.sign(payload, secretKey, JWTConfig);
 
+const getPayload = (token) => jwt.verify(token, secretKey);
+
 module.exports = {
   createToken,
+  getPayload,
 };

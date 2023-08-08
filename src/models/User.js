@@ -13,6 +13,7 @@ const UserSchema = (sequelize, DataTypes) => {
     },
     displayName: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,

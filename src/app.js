@@ -16,6 +16,7 @@ app.use(express.json());
 app.use('/login', routes.loginRoutes);
 app.use('/user', routes.userRoutes);
 app.use('/categories', routes.categoriesRoutes);
+app.use('/post', routes.postRoutes);
 
 app.use((error, _req, res, _next) => {
   const { status, message } = error;

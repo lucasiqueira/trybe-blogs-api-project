@@ -11,12 +11,15 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       content: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         foreignKey: true,
         references: {
           model: 'users',

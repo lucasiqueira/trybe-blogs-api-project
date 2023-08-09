@@ -1,5 +1,10 @@
 const { Category } = require('../models');
 
+const getAll = async () => {
+  const data = await Category.findAll();
+  return { status: 'SUCCESSFUL', data };
+};
+
 const createCategory = async (data) => {
   const isCategoryAlreadyRegistered = await Category.findOne({ where: { name: data.name } });
   if (isCategoryAlreadyRegistered) {
@@ -10,5 +15,6 @@ const createCategory = async (data) => {
 };
 
 module.exports = {
+  getAll,
   createCategory,
 };
